@@ -1,24 +1,33 @@
 package dev.redfox.powerplay.ui
 
-import android.app.Dialog
+import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.FileProvider
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.squareup.picasso.Picasso
+import com.squareup.picasso.Target
 import dagger.hilt.android.AndroidEntryPoint
-import dev.redfox.powerplay.R
 import dev.redfox.powerplay.adapters.BeerAdapter
 import dev.redfox.powerplay.databinding.FragmentBeerBinding
 import dev.redfox.powerplay.models.BeerModel
 import dev.redfox.powerplay.viewmodels.BeerViewModel
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+
 
 @AndroidEntryPoint
 class BeerFragment : Fragment() {
@@ -55,9 +64,7 @@ class BeerFragment : Fragment() {
 
             beerAdapter.onItemClick = {
                 Toast.makeText(context, "Share WhatsApp", Toast.LENGTH_SHORT).show()
-
-                sendMessage(it.name)
-
+                shareToWhatsApp(it)
             }
 
             beerAdapter.onItemLongClick = {
@@ -71,25 +78,35 @@ class BeerFragment : Fragment() {
         return binding.root
     }
 
+    fun shareToWhatsApp(it: BeerModel){
+        val target = object : Target {
+            override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
 
-    fun sendMessage(message:String) {
+                var shareText = "Name: ${it.name},\nTag: ${it.tagline}"
+                val bitmapPath: String =
+                    MediaStore.Images.Media.insertImage(context?.contentResolver, bitmap, "Beer", null)
+                val bitmapUri = Uri.parse(bitmapPath)
+                val shareIntent = Intent(Intent.ACTION_SEND)
+                shareIntent.type = "image/*"
+                shareIntent.putExtra(Intent.EXTRA_STREAM, bitmapUri)
+                shareIntent.putExtra(Intent.EXTRA_TEXT, shareText)
+                shareIntent.setPackage("com.whatsapp")
+                try {
+                    context?.startActivity(shareIntent)
+                } catch (ex: ActivityNotFoundException) {
+                    Toast.makeText(context, "Whatsapp is not installed on your device", Toast.LENGTH_SHORT).show()
+                }
+            }
 
-        // Creating intent with action send
-        val intent = Intent(Intent.ACTION_SEND)
+            override fun onBitmapFailed(e: Exception?, errorDrawable: Drawable?) {}
 
-        // Setting Intent type
-        intent.type = "text/plain"
+            override fun onPrepareLoad(placeHolderDrawable: Drawable?) {}
+        }
 
-        // Setting whatsapp package name
-        intent.setPackage("com.whatsapp")
+        Picasso.get()
+            .load(it.image_url)
+            .into(target)
 
-        // Give your message here
-        intent.putExtra(Intent.EXTRA_TEXT, message)
-
-
-
-        // Starting Whatsapp
-        startActivity(intent)
     }
 
 }
