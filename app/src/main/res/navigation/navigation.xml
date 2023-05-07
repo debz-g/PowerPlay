@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/beerFragment">
+    <fragment
+        android:id="@+id/beerFragment"
+        android:name="dev.redfox.powerplay.ui.BeerFragment"
+        android:label="fragment_beer"
+        tools:layout="@layout/fragment_beer" />
+</navigation>
