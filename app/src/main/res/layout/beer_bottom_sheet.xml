@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#00000000">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            >
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardBeer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:cardCornerRadius="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/beerPic"
+                    android:layout_width="130dp"
+                    android:layout_height="180dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/beerName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/sofiaprosoftbold"
+                android:maxLines="3"
+                android:text="Naruto"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cardBeer"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+
+            <TextView
+                android:id="@+id/beerTag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/sofiaprosoftmedium"
+                android:text="7.3"
+                android:maxLines="3"
+                android:textColor="@color/grey"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="@id/beerName"
+                app:layout_constraintTop_toBottomOf="@id/beerName" />
+
+            <TextView
+                android:id="@+id/brewDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/sofiaprosoftmedium"
+                android:text="2003-2004"
+                android:textColor="@color/grey"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="@id/beerTag"
+                app:layout_constraintTop_toBottomOf="@id/beerTag" />
+
+            <TextView
+                android:id="@+id/beerPh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/sofiaprosoftmedium"
+                android:text="131"
+                android:textColor="@color/grey"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="@id/brewDate"
+                app:layout_constraintTop_toBottomOf="@id/brewDate" />
+
+            <TextView
+                android:id="@+id/tvSynText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sofiaprosoftbold"
+                android:padding="8dp"
+                android:text="Description: "
+                android:textColor="@color/dark"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardBeer" />
+
+            <TextView
+                android:id="@+id/beerDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/sofiaprosoftregular"
+                android:text="description"
+                android:textColor="@color/dark"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/tvSynText" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

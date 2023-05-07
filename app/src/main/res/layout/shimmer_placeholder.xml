@@ -36,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/dark"
-                android:fontFamily="@font/nunito_semibold"
+                android:fontFamily="@font/sofiaprosoftmedium"
                 android:maxLines="3"
                 android:padding="8dp"
                 android:textColor="@color/white"

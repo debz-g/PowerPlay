@@ -45,12 +45,14 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    >
                     <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/product_image"
+                        android:id="@+id/beer_image"
                         android:layout_width="match_parent"
                         android:layout_height="250dp"
-                        android:scaleType="fitXY"
+
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -93,34 +95,34 @@
                         >
 
                         <TextView
-                            android:id="@+id/product_name"
+                            android:id="@+id/beer_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/sofiaprosoftmedium"
-                            android:text="Pendrive"
+                            android:text="Buzz"
                             android:textColor="@color/black"
                             android:textSize="15sp" />
 
                         <TextView
-                            android:id="@+id/product_price"
+                            android:id="@+id/beer_tagline"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/sofiaprosoftmedium"
-                            android:text="$435"
+                            android:text="A real bitter experience"
                             android:textColor="@color/black"
                             android:textSize="17sp" />
                     </LinearLayout>
 
 
                     <ImageButton
-                        android:id="@+id/btn_details"
+                        android:id="@+id/btn_share"
                         android:layout_width="60dp"
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:layout_gravity="center_vertical"
                         android:layout_marginEnd="10dp"
                         android:background="@drawable/btn_forward"
-                        android:src="@drawable/baseline_arrow_forward_24"
+                        android:src="@drawable/ic_share"
                         />
 
                 </LinearLayout>
