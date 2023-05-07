@@ -1,5 +1,3 @@
-# PowerPlay
-PowerPlay Assignment
 
 ## Built With 🛠
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
